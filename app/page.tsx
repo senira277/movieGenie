@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import StructuredData from '@/components/StructuredData';
 
 export const metadata: Metadata = {
-  title: "MovieGen – AI Movie & TV Show Recommendation Engine",
+  title: "GenieOfMovie – AI Movie & TV Show Recommendation Engine",
   description:
     "Find the perfect movie or TV series instantly using AI. Filter by mood, genre, IMDb rating, and more. Fast, simple, frustration-free movie discovery.",
   keywords: [

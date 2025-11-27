@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-gray-700">
           <p className="text-sm">
-            &copy; {currentYear} MovieGen. All rights reserved.
+            &copy; {currentYear} - GenieOfMovie - All rights reserved.
           </p>
 
           <div className="flex gap-6">
