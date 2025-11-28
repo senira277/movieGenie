@@ -4,8 +4,18 @@ import { useEffect, useState, useRef } from 'react';
 import { Film, Tv, Sparkles, Clapperboard, RotateCcw, Shuffle, ArrowRight, Frown, Calendar, Star, X, Clock, Trophy, Users, User } from 'lucide-react';
 import { Toaster, toast } from 'sonner';
 
-const moods = ['Happy', 'Neutral', 'Sad', 'Nostalgic', 'Excited'];
-const genres = ['Action', 'Comedy', 'Drama', 'Thriller', 'Horror', 'Sci-Fi'];
+const moods = ['Happy', 'Neutral', 'Sad', 'Nostalgic', 'Excited', 'Tense', 'Romantic'];
+
+// Updated comprehensive genre list
+const genres = [
+  'Action', 'Adventure', 'Animation', 'Anime', 
+  'Biography', 'Comedy', 'Crime', 'Documentary', 
+  'Drama', 'Family', 'Fantasy', 'History', 
+  'Horror', 'Musical', 'Mystery', 'Romance', 
+  'Satire', 'Sci-Fi', 'Sport', 'Thriller', 
+  'War', 'Western'
+];
+
 const timePeriods = [
   { label: 'Last 10 Years (>2015)', value: '2015' },
   { label: 'Last 15 Years (>2010)', value: '2010' },
@@ -50,7 +60,7 @@ export default function Generator() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [hasGenerated, setHasGenerated] = useState(false); // <--- NEW STATE
+  const [hasGenerated, setHasGenerated] = useState(false);
   const [loadingMsgIndex, setLoadingMsgIndex] = useState(0);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [errorMsg, setErrorMsg] = useState('');
@@ -95,7 +105,7 @@ export default function Generator() {
     if (!isJumble) {
       setSeenHistory([]);
       localStorage.removeItem('moviegen-seen');
-      setHasGenerated(true); // Mark as generated
+      setHasGenerated(true);
     }
 
     localStorage.setItem('moviegen-preferences', JSON.stringify(prefs));
@@ -118,7 +128,7 @@ export default function Generator() {
       const userPrompt = `
         Recommend 5 ${prefs.type}s that match the following criteria:
         Mood: ${prefs.mood}
-        Genres: ${prefs.genres.join(', ')} (don't be strict on these just somet genre that alligns with the movie)
+        Genres: ${prefs.genres.join(', ')} (don't be strict on these just some genre that aligns with the movie)
         ${timeConstraint}
         ${prefs.rating ? `Minimum Rating: ${prefs.rating}/10` : ''}
         ${prefs.customPrompt ? `Additional preferences: ${prefs.customPrompt}` : ''}
@@ -131,7 +141,7 @@ export default function Generator() {
         Return a JSON array of objects with exactly these fields:
         - title (string)
         - year (string)
-        - trailerUrl (string - provide only youtube search link )
+        - trailerUrl (string - strictly provide a YouTube Search URL in this format: "https://www.youtube.com/results?search_query=Movie+Title+Trailer")
       `;
 
       const res = await fetch("/api/generate", {
@@ -170,7 +180,7 @@ export default function Generator() {
         }
 
         setRecommendations(finalRecs);
-        setHasGenerated(true); // Ensure this is true on success
+        setHasGenerated(true);
 
         if (finalRecs.length > 0) {
           const newHistory = [...(isJumble ? seenHistory : []), ...finalRecs.map((r: Recommendation) => ({ title: r.title, year: r.year }))];
@@ -195,7 +205,7 @@ export default function Generator() {
   const handleReset = () => {
     setRecommendations([]);
     setSeenHistory([]);
-    setHasGenerated(false); // Reset this so the form shows again
+    setHasGenerated(false);
     localStorage.removeItem('moviegen-seen');
     setTimeout(() => {
         topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -420,7 +430,7 @@ export default function Generator() {
             </div>
           </div>
         ) : recommendations.length === 0 && hasGenerated && !isLoading ? (
-          /* EMPTY STATE (ONLY if hasGenerated is true) */
+          /* EMPTY STATE */
           <div className="text-center py-12 animate-in fade-in zoom-in duration-300">
             <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
               <Frown className="w-10 h-10 text-gray-400" />
@@ -465,12 +475,12 @@ export default function Generator() {
                 </div>
               </div>
 
-              {/* GENRES */}
+              {/* GENRES - Updated Grid for larger list */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-4">Genre {prefs.genres.length > 0 ? `(${prefs.genres.length} selected)` : 'Select all that apply'}</label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                   {genres.map((genre) => (
-                    <button key={genre} onClick={() => toggleGenre(genre)} className={`px-6 py-3 border-2 rounded-xl transition-all font-medium ${prefs.genres.includes(genre) ? 'border-black bg-gray-100' : 'border-gray-300 hover:border-black hover:bg-gray-50'}`}>
+                    <button key={genre} onClick={() => toggleGenre(genre)} className={`px-4 py-3 border-2 rounded-xl transition-all font-medium text-sm ${prefs.genres.includes(genre) ? 'border-black bg-gray-100' : 'border-gray-300 hover:border-black hover:bg-gray-50'}`}>
                       {genre}
                     </button>
                   ))}
