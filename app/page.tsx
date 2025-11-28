@@ -20,16 +20,36 @@ export const metadata: Metadata = {
     "movie finder",
     "recommend me a movie",
     "AI film recommendations",
+    "best movies to watch",
+    "tv show suggestions",
+    "movie discovery",
+    "best action movies",
+    "romantic comedies",
+    "sci-fi movies",
+    "horror movie recommendations",
+    "family movies",
+    "top rated movies",
+    "IMDb based recommendations",
+    "mood based movie suggestions",
+    "genre based movie finder",
+    "custom movie prompts",
+    "instant movie recommendations",
+    "movie recommendation engine",
+    "movies to watch",
+    "tv shows to watch",
+    "high rated movies",
+    "critically acclaimed films",
+    "hidden gem movies",
   ],
   openGraph: {
     title: "MovieGen – AI Movie & TV Show Recommendation Engine",
     description:
       "Instant AI-powered movie and TV show recommendations. Mood-based, genre-based, IMDb-based filters. Stop scrolling. Start watching.",
-    url: "https://yourdomain.com",
+    url: "https://genieofmovie.com",
     siteName: "MovieGen",
     images: [
       {
-        url: "https://yourdomain.com/og-image.jpg", // add later
+        url: "https://genieofmovie.com/og-image.jpg", // add later
         width: 1200,
         height: 630,
         alt: "MovieGen AI Recommendation Banner",
@@ -43,10 +63,10 @@ export const metadata: Metadata = {
     title: "MovieGen – Find What to Watch Instantly",
     description:
       "AI-powered movie and TV series recommendations based on mood, genre, IMDb rating, and custom prompts.",
-    images: ["https://yourdomain.com/og-image.jpg"], // add later
+    images: ["https://genieofmovie.com/og-image.jpg"], // add later
   },
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://genieofmovie.com",
   },
   robots: {
     index: true,
