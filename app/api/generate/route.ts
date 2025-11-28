@@ -2,10 +2,21 @@ export const dynamic = "force-dynamic";
 
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 
 export async function POST(req: Request) {
   
   try {
+    // Rate limiting
+    // --- RATE LIMIT CHECK ---
+    const ip = getClientIp(req);
+    const { success, remaining } = checkRateLimit(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: true, message: "Rate limit exceeded. Please try again later." },
+        { status: 429 }
+      );
+    }
     // Parse the request body
     const body = await req.json();
     const { prompt } = body;
@@ -93,6 +104,9 @@ export async function POST(req: Request) {
         );
       }
     }
+
+    // for each results, send the movie title & year to OMDB api to validate preferences
+
 
     console.log("Successfully parsed JSON:", parsed);
     return NextResponse.json({ success: true, data: parsed });
