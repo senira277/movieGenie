@@ -131,7 +131,7 @@ export default function Generator() {
         Return a JSON array of objects with exactly these fields:
         - title (string)
         - year (string)
-        - trailerUrl (string - youtube search link or video id)
+        - trailerUrl (string - provide only youtube search link )
       `;
 
       const res = await fetch("/api/generate", {
