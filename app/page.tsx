@@ -8,78 +8,7 @@ import Generator from '@/components/Generator';
 import Footer from '@/components/Footer';
 import StructuredData from '@/components/StructuredData';
 
-export const metadata: Metadata = {
-  title: "GenieOfMovie – AI Movie & TV Show Recommendation Engine",
-  description:
-    "Find the perfect movie or TV series instantly using AI. Filter by mood, genre, IMDb rating, and more. Fast, simple, frustration-free movie discovery.",
-  keywords: [
-    "movie recommendation",
-    "tv series recommendation",
-    "AI movie suggestions",
-    "what to watch",
-    "movie finder",
-    "recommend me a movie",
-    "AI film recommendations",
-    "best movies to watch",
-    "tv show suggestions",
-    "movie discovery",
-    "best action movies",
-    "romantic comedies",
-    "sci-fi movies",
-    "horror movie recommendations",
-    "family movies",
-    "top rated movies",
-    "IMDb based recommendations",
-    "mood based movie suggestions",
-    "genre based movie finder",
-    "custom movie prompts",
-    "instant movie recommendations",
-    "movie recommendation engine",
-    "movies to watch",
-    "tv shows to watch",
-    "high rated movies",
-    "critically acclaimed films",
-    "hidden gem movies",
-  ],
-  openGraph: {
-    title: "MovieGen – AI Movie & TV Show Recommendation Engine",
-    description:
-      "Instant AI-powered movie and TV show recommendations. Mood-based, genre-based, IMDb-based filters. Stop scrolling. Start watching.",
-    url: "https://genieofmovie.com",
-    siteName: "MovieGen",
-    images: [
-      {
-        url: "https://genieofmovie.com/og-image.jpg", // add later
-        width: 1200,
-        height: 630,
-        alt: "MovieGen AI Recommendation Banner",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MovieGen – Find What to Watch Instantly",
-    description:
-      "AI-powered movie and TV series recommendations based on mood, genre, IMDb rating, and custom prompts.",
-    images: ["https://genieofmovie.com/og-image.jpg"], // add later
-  },
-  alternates: {
-    canonical: "https://genieofmovie.com",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
-  },
-};
+
 
 export default function Home() {
   return (
