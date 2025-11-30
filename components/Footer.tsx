@@ -1,5 +1,9 @@
+import { Mail } from 'lucide-react';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  // TODO: Replace with your actual email address
+  const contactEmail = "genieofmovie@gmail.com"; 
 
   return (
     <footer className="py-12 px-4">
@@ -11,20 +15,14 @@ export default function Footer() {
 
           <div className="flex gap-6">
             <a
-              href="https://tiktok.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm hover:text-black transition-colors font-medium"
+              href={`mailto:${contactEmail}?subject=Inquiry for GenieOfMovie`}
+              className="flex items-center gap-2 text-sm hover:text-black transition-colors font-medium group"
+              aria-label="Send email for inquiries"
             >
-              TikTok
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm hover:text-black transition-colors font-medium"
-            >
-              Instagram
+              <div className="p-2 bg-gray-100 rounded-full group-hover:bg-gray-200 transition-colors">
+                <Mail size={18} />
+              </div>
+              <span>For Inquiries</span>
             </a>
           </div>
         </div>
