@@ -421,11 +421,12 @@ export default function Generator() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 border-t border-gray-100">
-              <button onClick={handleReset} className="px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold hover:border-black hover:text-black transition-all flex items-center justify-center gap-2">
-                <RotateCcw size={18} /> Change Preferences
-              </button>
+
               <button onClick={() => handleGenerate(true)} className="px-8 py-3 rounded-xl bg-black text-white font-semibold hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
                 <Shuffle size={18} /> Jumble / Load New
+              </button>
+              <button onClick={handleReset} className="px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold hover:border-black hover:text-black transition-all flex items-center justify-center gap-2">
+                <RotateCcw size={18} /> Change Preferences
               </button>
             </div>
           </div>
